@@ -10,7 +10,9 @@
       "Bash(npx create-react-app:*)",
       "Bash(mv:*)",
       "Bash(true)",
-      "Bash(rmdir:*)"
+      "Bash(rmdir:*)",
+      "mcp__specmatic__start_mock_server",
+      "Bash(PORT=3001 npm start)"
     ],
     "deny": [],
     "ask": []
