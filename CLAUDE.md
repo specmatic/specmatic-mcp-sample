@@ -62,3 +62,4 @@ This project uses Specmatic MCP for:
 - Update .gitignore as needed
 
 Each component has detailed instructions in its respective CLAUDE.md file.
+- make sure to shutdown backend before starting construction of front end so that when you start specmatic mcp mock there is no port collision
