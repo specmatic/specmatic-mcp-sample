@@ -15,10 +15,10 @@ The backend should implement the Order API defined in `../products_api.yaml`:
 
 ## Development Guidelines
 - Implement all endpoints according to the OpenAPI specification
-- Return proper HTTP status codes (200, 201, 400)
+- Return proper HTTP status codes as per the OpenAPI specification
 - Handle validation errors with appropriate error responses
-- Include timestamp, status, error, and path in error responses
 - Follow RESTful conventions
+- Structure the code such that routes, models, etc. are in separate folders and files
 - Do not use curl to verify endpoints, use Specmatic MCP contract test instead to get feedback
 
 ## Testing
