@@ -116,7 +116,7 @@ See `products_api.yaml` for the complete specification with examples and validat
 
 ## 📚 Learn More
 
-- [Specmatic Documentation](https://specmatic.in/)
+- [Specmatic Documentation](https://specmatic.io/)
 - [Claude Code Documentation](https://docs.anthropic.com/claude/docs/claude-code)
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
 
