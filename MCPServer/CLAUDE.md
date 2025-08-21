@@ -39,3 +39,11 @@ Build an MCP server that provides tools wrapping the Products API capabilities d
 - Validate inputs against OpenAPI schema constraints
 - Handle network failures gracefully
 - Provide clear success/failure status in responses
+
+## Documentation
+
+Add README that has
+- Details on how to run this MCP server with
+  - Specmatic MCP mock
+  - Real Back End
+- Instructions to add this MCP to Claude Code using addJSON
