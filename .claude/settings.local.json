@@ -14,7 +14,8 @@
       "mcp__specmatic__start_mock_server",
       "Bash(PORT=3001 npm start)",
       "Bash(pkill:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": []

@@ -22,7 +22,7 @@ Build a web interface that consumes the Products API defined in `../products_api
 - Handle success and error responses
 
 ### API Integration
-- Base URL: As per first UR in `../products_api.yaml`
+- Base URL: As per first URL in `../products_api.yaml`
 - GET /products?type={type} for filtering
 - POST /products for creating new products
 - Handle 200, 201, and 400 responses appropriately
@@ -37,6 +37,8 @@ Build a web interface that consumes the Products API defined in `../products_api
 
 ## Development Notes
 - Build FrontEnd by using Specmatic MCP Mock by passing it `../products_api.yaml`. Do not start the backend in `../BackEnd` for this purpose.
+- Setup up node env such that in Dev mode the FrontEnd talks to Specmatic MCP Mock server and prod / regular mode it is wired to talk to the real application. This will help avoid conflict of where the real Backend is running and the mock backend is running.
+- Always use the dev mode while in active development and thereby build the Frontend agains the mock backend only
 - Use React
 - Implement proper error handling
 - Add loading states for better UX
