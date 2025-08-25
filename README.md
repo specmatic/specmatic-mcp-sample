@@ -14,43 +14,49 @@ Starting with just an OpenAPI specification (`products_api.yaml`), this project 
 
 ## 🚀 Quick Start
 
-### Prerequisites
+> **⚡ Just 4 Steps - Claude Does Everything Else!**
+> 
+> Complete the prerequisites and usage steps below, then Claude will automatically build your entire full-stack application using Specmatic MCP as intelligent guardrails.
 
-1. **Install Claude Code** (if not already installed):
-   ```bash
-   # Follow installation instructions at https://docs.anthropic.com/claude/docs/claude-code
-   ```
+### ✅ Prerequisites (Required)
 
-2. **Add Specmatic MCP Server**:
-   ```bash
-   claude mcp add-json specmatic '{"command":"docker","args":["run","--rm","-i","--network=host","-v","/Users/harikrishnan/projects/agilefaqs/ContractTesting/MCP/specmatic-mcp-sample:/app/reports","specmatic-mcp"],"env":{}}'
-   ```
+**Step 1:** **Install Claude Code** (if not already installed):
 
-### Usage
+Follow installation instructions at [https://docs.anthropic.com/claude/docs/claude-code](https://docs.anthropic.com/claude/docs/claude-code)
 
-Once you have Claude Code with Specmatic MCP configured:
+**Step 2:** **Add Specmatic MCP Server**:
+```bash
+claude mcp add-json specmatic '{"command":"docker","args":["run","--rm","-i","--network=host","-v","/Users/harikrishnan/projects/agilefaqs/ContractTesting/MCP/specmatic-mcp-sample:/app/reports","specmatic-mcp"],"env":{}}'
+```
 
-1. **Open this project in Claude Code**:
-   ```bash
-   cd specmatic-mcp-sample
-   claude
-   ```
+### 🎯 Usage (2 Simple Commands)
 
-2. **Ask Claude to build the application**:
-   ```
-   Please build the complete application according to the OpenAPI specification
-   ```
+**Step 3:** **Open this project in Claude Code**:
+```bash
+cd specmatic-mcp-sample
+claude
+```
 
-3. **Reset the project to try again** (optional - Claude Code command available):
-   ```
-   /reset-sample-project
-   ```
+**Step 4:** **Ask Claude to build the application**:
+```
+Please build the complete application according to the OpenAPI specification
+```
 
-That's it! Claude will use the Specmatic MCP server to:
-- Validate implementations against the OpenAPI contract
-- Provide mock servers for frontend development
-- Run contract and resiliency tests
-- Ensure both frontend and backend comply with the specification
+### 🔄 Optional Reset
+**Reset the project to try again** (optional - Claude Code command available):
+```
+/reset-sample-project
+```
+
+---
+
+**🎉 That's it! Claude will automatically:**
+- ✨ Build complete Node.js/Express backend API
+- ✨ Create React frontend application  
+- ✨ Validate implementations against the OpenAPI contract
+- ✨ Provide mock servers for development
+- ✨ Run contract and resiliency tests
+- ✨ Ensure all components comply with the specification
 
 ## 📁 Project Structure
 
@@ -111,73 +117,73 @@ specmatic-mcp-sample/
 
 ### Production Setup
 ```
-┌─────────────────┐                  ┌─────────────────┐                  ┌──────────────────┐
-│                 │                  │                 │                  │                  │
-│    Frontend     │ ── HTTP ──────► │    Backend      │ ◄── HTTP ─────── │   MCP Server     │
-│   (React App)   │    Requests      │ (Express API)   │     Requests     │  (MCP Tools)     │
-│                 │                  │                 │                  │                  │
-│   Port: 3001    │                  │   Port: 3000    │                  │                  │
-└─────────────────┘                  └─────────────────┘                  └──────────────────┘
+┌─────────────────┐                 ┌─────────────────┐                 ┌─────────────────┐
+│                 │                 │                 │                 │                 │
+│    Frontend     │ ── HTTP ─────►  │    Backend      │ ◄──── HTTP ──── │   MCP Server    │
+│   (React App)   │    Requests     │ (Express API)   │     Requests    │  (MCP Tools)    │
+│                 │                 │                 │                 │                 │
+│   Port: 3001    │                 │   Port: 3000    │                 │                 │
+└─────────────────┘                 └─────────────────┘                 └─────────────────┘
 ```
 
 ### Development Setup - Frontend
 ```
-┌─────────────────┐                      ┌─────────────────┐
-│                 │                      │                 │
-│    Frontend     │      Mock Requests   │ Specmatic Mock  │
+┌─────────────────┐                     ┌─────────────────┐
+│                 │                     │                 │
+│    Frontend     │     Mock Requests   │ Specmatic Mock  │
 │   (React App)   │ ◄─────────────────► │    Server       │
-│                 │                      │                 │
-│   Port: 3001    │                      │   Port: 9001    │
-└─────────────────┘                      └─────────┬───────┘
-                                                   │
-                                                   │ Based on
-                                                   │
-                                                   ▼
-                                      ┌─────────────────────┐
-                                      │                     │
-                                      │   products_api.yaml │
-                                      │  (OpenAPI Spec)     │
-                                      │                     │
-                                      └─────────────────────┘
+│                 │                     │                 │
+│   Port: 3001    │                     │   Port: 9001    │
+└─────────────────┘                     └─────────┬───────┘
+                                                  │
+                                                  │ Based on
+                                                  │
+                                                  ▼
+                                     ┌─────────────────────┐
+                                     │                     │
+                                     │   products_api.yaml │
+                                     │  (OpenAPI Spec)     │
+                                     │                     │
+                                     └─────────────────────┘
 ```
 
 ### Development Setup - MCP Server
 ```
-┌─────────────────┐                      ┌─────────────────┐
-│                 │                      │                 │
-│   MCP Server    │      Mock Requests   │ Specmatic Mock  │
+┌─────────────────┐                     ┌─────────────────┐
+│                 │                     │                 │
+│   MCP Server    │     Mock Requests   │ Specmatic Mock  │
 │  (MCP Tools)    │ ◄─────────────────► │    Server       │
-│                 │                      │                 │
-│                 │                      │   Port: 9002    │
-└─────────────────┘                      └─────────┬───────┘
-                                                   │
-                                                   │ Based on
-                                                   │
-                                                   ▼
-                                      ┌─────────────────────┐
-                                      │                     │
-                                      │   products_api.yaml │
-                                      │  (OpenAPI Spec)     │
-                                      │                     │
-                                      └─────────────────────┘
+│                 │                     │                 │
+│                 │                     │   Port: 9002    │
+└─────────────────┘                     └─────────┬───────┘
+                                                  │
+                                                  │ Based on
+                                                  │
+                                                  ▼
+                                     ┌─────────────────────┐
+                                     │                     │
+                                     │   products_api.yaml │
+                                     │  (OpenAPI Spec)     │
+                                     │                     │
+                                     └─────────────────────┘
 ```
 
 ### Development Setup - Backend
 ```
-┌─────────────────┐                      ┌─────────────────┐
-│                 │                      │                 │
-│ Specmatic MCP   │ ───► Contract        │    Backend      │
-│    Tools        │      Testing         │ (Express API)   │
-│                 │                      │                 │
-│ (via Docker)    │ ───► Resiliency     │   Port: 3000    │
-└─────────┬───────┘      Testing         └─────────────────┘
+┌─────────────────┐                       ┌─────────────────┐
+│                 │                       │                 │
+│ Specmatic MCP   │ ───► Contract   ───►  │    Backend      │
+│    Tools        │      Testing          │ (Express API)   │
+│                 │                       │                 │
+│ (via Docker)    │ ───► Resiliency ───►  │   Port: 3000    │
+└─────────┬───────┘      Testing          └─────────────────┘
           │
           │ Validates against
           │
           ▼
 ┌─────────────────────┐
 │                     │
-│   products_api.yaml │
+│  products_api.yaml  │
 │  (OpenAPI Spec)     │
 │                     │
 └─────────────────────┘
