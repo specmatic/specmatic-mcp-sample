@@ -20,7 +20,8 @@
       "Bash(touch:*)",
       "Bash(cat:*)",
       "Bash(find:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
