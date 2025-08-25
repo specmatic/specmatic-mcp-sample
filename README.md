@@ -52,10 +52,10 @@ That's it! Claude will use the Specmatic MCP server to:
 ```
 specmatic-mcp-sample/
 ├── products_api.yaml      # OpenAPI specification (the single source of truth)
-├── BackEnd/              # Node.js/Express API implementation
+├── backend/              # Node.js/Express API implementation
 │   ├── CLAUDE.md        # Backend development instructions
 │   └── ...
-├── FrontEnd/            # React frontend application  
+├── frontend/            # React frontend application  
 │   ├── CLAUDE.md        # Frontend development instructions
 │   └── ...
 └── README.md           # This file

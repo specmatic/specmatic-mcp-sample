@@ -5,9 +5,9 @@ This is a sample project demonstrating contract testing using Specmatic MCP (Mod
 ## Project Structure
 
 - `products_api.yaml` - OpenAPI specification defining the Products API contract
-- `BackEnd/` - Node.js/Express API implementation
-- `FrontEnd/` - React frontend application
-- `MCPServer/` - MCP Server with Products API tools
+- `backend/` - Node.js/Express API implementation
+- `frontend/` - React frontend application
+- `mcpserver/` - MCP Server with Products API tools
 
 ## Overview
 
@@ -26,8 +26,8 @@ Build components in this specific order:
 
 ### 1. Backend Development (First Priority)
 ```bash
-cd BackEnd
-# Follow instructions in BackEnd/CLAUDE.md
+cd backend
+# Follow instructions in backend/CLAUDE.md
 # Use Specmatic MCP for contract testing, not manual curl testing
 # IMPORTANT: Resiliency tests MUST pass
 # When there are contract or resiliency tests failed, analyse the test failures in JUnit report file provided in Specmatic MCP response and make necessary fixes in the code
@@ -35,8 +35,8 @@ cd BackEnd
 
 ### 2. Frontend Development (Second Priority)
 ```bash
-cd FrontEnd
-# Follow instructions in FrontEnd/CLAUDE.md
+cd frontend
+# Follow instructions in frontend/CLAUDE.md
 
 # DEV MODE (Default for development):
 # 1. Shutdown backend if running to avoid port conflicts
@@ -54,8 +54,8 @@ cd FrontEnd
 
 ### 3. MCP Server Development (Third Priority)
 ```bash
-cd MCPServer
-# Follow instructions in MCPServer/CLAUDE.md
+cd mcpserver
+# Follow instructions in mcpserver/CLAUDE.md
 # Implements get_products and create_product MCP tools
 
 # DEV MODE (Default for development):
@@ -96,12 +96,12 @@ This project uses Specmatic MCP for:
 ### Starting Mock Servers
 ```bash
 # For Frontend development
-cd FrontEnd
+cd frontend
 # Start Specmatic MCP Mock on port 9001
 # Use Specmatic MCP manage_mock_server tool or equivalent
 
 # For MCP Server development
-cd MCPServer
+cd mcpserver
 # Start Specmatic MCP Mock on port 9002
 # Use Specmatic MCP manage_mock_server tool or equivalent
 ```
@@ -135,13 +135,13 @@ cd MCPServer
 ### Mock Server Lifecycle in Development Workflow
 ```bash
 # Frontend Development Cycle
-cd FrontEnd
+cd frontend
 # 1. Start Specmatic MCP Mock on port 9001
 # 2. Develop frontend features against mock
 # 3. Shutdown mock server when done
 
 # MCP Server Development Cycle  
-cd MCPServer
+cd mcpserver
 # 1. Start Specmatic MCP Mock on port 9002
 # 2. Develop MCP tools against mock
 # 3. Shutdown mock server when done

@@ -1,4 +1,4 @@
-# FrontEnd Instructions
+# Frontend Instructions
 
 This is the frontend implementation for the Specmatic MCP Sample project.
 
@@ -36,8 +36,8 @@ Build a web interface that consumes the Products API defined in `../products_api
 - Clean, intuitive interface
 
 ## Development Notes
-- Build FrontEnd by using Specmatic MCP Mock by passing it `../products_api.yaml`. Do not start the backend in `../BackEnd` for this purpose.
-- Setup up node env such that in Dev mode the FrontEnd talks to Specmatic MCP Mock server and prod / regular mode it is wired to talk to the real application. This will help avoid conflict of where the real Backend is running and the mock backend is running.
+- Build Frontend by using Specmatic MCP Mock by passing it `../products_api.yaml`. Do not start the backend in `../backend` for this purpose.
+- Setup up node env such that in Dev mode the Frontend talks to Specmatic MCP Mock server and prod / regular mode it is wired to talk to the real application. This will help avoid conflict of where the real backend is running and the mock backend is running.
 - Always use the dev mode while in active development and thereby build the Frontend agains the mock backend only
 - Use React
 - Implement proper error handling

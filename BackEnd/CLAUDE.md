@@ -1,4 +1,4 @@
-# BackEnd Instructions
+# Backend Instructions
 
 This is the backend implementation for the Specmatic MCP Sample project.
 
