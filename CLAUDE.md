@@ -25,6 +25,7 @@ cd BackEnd
 # Follow instructions in BackEnd/CLAUDE.md
 # Use Specmatic MCP for contract testing, not manual curl testing
 # IMPORTANT: Resiliency tests MUST pass
+# When there are contract or resiliency tests failed, analyse the test failures in JUnit report file provided in Specmatic MCP response and make necessary fixes in the code
 ```
 
 ### 2. Frontend Development (Second Priority)
