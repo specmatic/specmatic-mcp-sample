@@ -7,7 +7,7 @@ This is a sample project demonstrating contract testing using Specmatic MCP (Mod
 - `products_api.yaml` - OpenAPI specification defining the Products API contract
 - `backend/` - Node.js/Express API implementation
 - `frontend/` - React frontend application
-- `mcpserver/` - MCP Server with Products API tools
+- `mcp-server/` - MCP Server with Products API tools
 
 ## Overview
 
@@ -54,8 +54,8 @@ cd frontend
 
 ### 3. MCP Server Development (Third Priority)
 ```bash
-cd mcpserver
-# Follow instructions in mcpserver/CLAUDE.md
+cd mcp-server
+# Follow instructions in mcp-server/CLAUDE.md
 # Implements get_products and create_product MCP tools
 
 # DEV MODE (Default for development):
@@ -101,7 +101,7 @@ cd frontend
 # Use Specmatic MCP manage_mock_server tool or equivalent
 
 # For MCP Server development
-cd mcpserver
+cd mcp-server
 # Start Specmatic MCP Mock on port 9002
 # Use Specmatic MCP manage_mock_server tool or equivalent
 ```
@@ -141,7 +141,7 @@ cd frontend
 # 3. Shutdown mock server when done
 
 # MCP Server Development Cycle  
-cd mcpserver
+cd mcp-server
 # 1. Start Specmatic MCP Mock on port 9002
 # 2. Develop MCP tools against mock
 # 3. Shutdown mock server when done

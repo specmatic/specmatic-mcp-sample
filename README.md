@@ -41,6 +41,11 @@ Once you have Claude Code with Specmatic MCP configured:
    Please build the complete application according to the OpenAPI specification
    ```
 
+3. **Reset the project to try again** (optional - Claude Code command available):
+   ```
+   /reset-sample-project
+   ```
+
 That's it! Claude will use the Specmatic MCP server to:
 - Validate implementations against the OpenAPI contract
 - Provide mock servers for frontend development
