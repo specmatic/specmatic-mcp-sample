@@ -23,7 +23,7 @@ Starting with just an OpenAPI specification (`products_api.yaml`), this project 
 
 2. **Add Specmatic MCP Server**:
    ```bash
-   claude mcp add-json specmatic '{"command":"docker","args":["run","--rm","-i","--network=host","specmatic-mcp-server"],"env":{}}'
+   claude mcp add-json specmatic '{"command":"docker","args":["run","--rm","-i","--network=host","-v","/Users/harikrishnan/projects/agilefaqs/ContractTesting/MCP/specmatic-mcp-sample:/app/reports","specmatic-mcp"],"env":{}}'
    ```
 
 ### Usage

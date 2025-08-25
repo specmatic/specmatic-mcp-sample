@@ -23,3 +23,6 @@ The backend should implement the Order API defined in `../products_api.yaml`:
 
 ## Testing
 - Test against the OpenAPI specification using Specmatic MCP. Both contract test and resiliency test should pass
+
+## Cleanup
+- Shutdown backend server after all tests have passed
