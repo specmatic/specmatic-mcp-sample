@@ -15,6 +15,11 @@ The project implements a simple Products API with the following capabilities:
 - GET /products - Retrieve products filtered by type (book, food, gadget, other)
 - POST /products - Create new products
 
+## Development Guidelines
+
+- Name variables and method descriptively, avoid short forms
+- Create appropriate .gitignore file
+
 ## Development Workflow
 
 Build components in this specific order:
