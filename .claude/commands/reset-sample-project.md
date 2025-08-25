@@ -5,14 +5,9 @@ Reset the project to its initial state, keeping only the directory structure and
 ## Command
 
 ```bash
-# Remove all files from backend directory except CLAUDE.md
-find backend -type f ! -name "CLAUDE.md" -delete
-
-# Remove all files from frontend directory except CLAUDE.md
-find frontend -type f ! -name "CLAUDE.md" -delete
-
-# Remove all files from mcp-server directory except CLAUDE.md
-find mcp-server -type f ! -name "CLAUDE.md" -delete
+# Reset the git state
+git checkout .
+git clean -fdx
 
 # Remove any generated files from root directory but keep essential files
 find . -maxdepth 1 -type f ! -name "products_api.yaml" ! -name "CLAUDE.md" ! -name "README.md" ! -name ".gitignore" -delete
