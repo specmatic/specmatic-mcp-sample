@@ -27,7 +27,7 @@ Follow installation instructions at [https://docs.anthropic.com/claude/docs/clau
 **Step 2:** **Add Specmatic MCP Server**:
 ```bash
 cd specmatic-mcp-sample
-claude mcp add-json specmatic '{"command":"docker","args":["run","--rm","-i","--network=host","-v","'$(pwd)':/app/reports","specmatic-mcp"],"env":{}}'
+claude mcp add-json specmatic '{"command":"docker","args":["run","--rm","-i","--network=host","-v","'$(pwd)':/app/reports","specmatic/specmatic-mcp"],"env":{}}'
 ```
 
 ### 🎯 Usage (2 Simple Commands)
