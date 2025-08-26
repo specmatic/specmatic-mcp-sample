@@ -1,6 +1,8 @@
 # Specmatic MCP Sample Project
 
-This project demonstrates how to build a complete full-stack application from an OpenAPI specification using **Specmatic MCP** as intelligent guardrails, without requiring Specmatic as a project dependency.
+This project demonstrates how to build a complete full-stack application from an OpenAPI specification using **[Specmatic MCP](https://hub.docker.com/repository/docker/specmatic/specmatic-mcp)** as intelligent guardrails, without requiring Specmatic as a project dependency.
+
+> **Note:** This project uses Claude Code for demo purposes, however you can use any coding agent of your choice and make necessary changes accordingly.
 
 ## 🎯 What This Demo Shows
 
@@ -14,9 +16,9 @@ Starting with just an OpenAPI specification (`products_api.yaml`), this project 
 
 ## 🚀 Quick Start
 
-> **⚡ Just 4 Steps - Claude Does Everything Else!**
+> **⚡ Just One Prompt - No Contract Drift!**
 >
-> Complete the prerequisites and usage steps below, then Claude will automatically build your entire full-stack application using Specmatic MCP as intelligent guardrails.
+> Complete the quick setup below, then Claude Code with Specmatic MCP will build your entire full-stack application without any drift from the OpenAPI specification.
 
 ### ✅ Prerequisites (Required)
 
@@ -27,9 +29,8 @@ Follow installation instructions at [https://docs.anthropic.com/claude/docs/clau
 **Step 2:** **Add Specmatic MCP Server**:
 ```bash
 cd specmatic-mcp-sample
-claude mcp add-json specmatic '{"command":"docker","args":["run","--rm","-i","--network=host","-v","'$(pwd)':/app/reports","specmatic/specmatic-mcp:1.0.1"],"env":{}}'
+claude mcp add-json specmatic '{"command":"docker","args":["run","--rm","-i","--network=host","-v","'$(pwd)':/app/reports","specmatic/specmatic-mcp:latest"],"env":{}}'
 ```
-
 ### 🎯 Usage (2 Simple Commands)
 
 **Step 3:** **Open this project in Claude Code**:
