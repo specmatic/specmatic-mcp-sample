@@ -43,3 +43,4 @@ Build a web interface that consumes the Products API defined in `../products_api
 - Implement proper error handling
 - Add loading states for better UX
 - Consider using a HTTP client library for API calls
+- Run Frontend on port 4000 only
