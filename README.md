@@ -42,6 +42,8 @@ claude
 Please build the complete application according to the OpenAPI specification
 ```
 
+TIP: use plan mode to review the task list before proceeding
+
 ### 🔄 Optional Reset
 **Reset the project to try again** (optional - Claude Code command available):
 ```
