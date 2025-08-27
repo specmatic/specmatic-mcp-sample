@@ -37,18 +37,25 @@ cd backend
 cd frontend
 # Follow instructions in frontend/CLAUDE.md
 
-# DEV MODE (Default for development):
+# This phase includes BOTH implementation AND isolation testing:
 # 1. Shutdown backend if running to avoid port conflicts
 # 2. Start Specmatic MCP Mock on port 9001 (based on products_api.yaml)
 # 3. Configure frontend to use http://localhost:9001 for API calls
 # 4. Develop against consistent mock responses
+# 5. Run Playwright MCP browser testing against mock server
+# 6. Complete all isolation testing requirements (MANDATORY)
 
-# PROD MODE (Integration testing):
-# 1. Ensure backend is running on http://localhost:3000
-# 2. Configure frontend to use http://localhost:3000 for API calls
-# 3. Test against real backend implementation
+# CLEANUP: Always shutdown Specmatic MCP Mock after development and testing
+```
 
-# CLEANUP: Always shutdown Specmatic MCP Mock after development
+### 3. Final Integration Testing (Third Priority)
+```bash
+# Integration testing between Frontend and Backend:
+# 1. Ensure all mock servers are shutdown
+# 2. Start real backend on port 3000
+# 3. Configure frontend for production mode (http://localhost:3000)
+# 4. Run Playwright MCP UI automation testing only (no contract/resiliency tests needed)
+# 5. Verify end-to-end workflows and data persistence
 ```
 
 ## Contract Testing with Specmatic MCP
@@ -94,40 +101,44 @@ cd frontend
 
 1. Start with the OpenAPI spec in `products_api.yaml`
 2. **Build Backend first** - implement according to contract, ensure resiliency tests pass
-3. **Build Frontend second** - use Specmatic MCP Mock (port 9001) for development
+3. **Build Frontend second** - use Specmatic MCP Mock (port 9001) for development and isolation testing
    - Start mock server before development
-   - Shutdown mock server after development
-4. Run integration tests across both components
+   - Complete implementation and Playwright MCP testing
+   - Shutdown mock server after development and testing
+4. **Final Integration** - Run UI automation testing with real backend (no additional contract tests needed)
 
 ### Mock Server Lifecycle in Development Workflow
 ```bash
-# Frontend Development Cycle
+# Frontend Development Cycle (includes isolation testing)
 cd frontend
 # 1. Start Specmatic MCP Mock on port 9001
 # 2. Develop frontend features against mock
-# 3. Shutdown mock server when done
+# 3. Run Playwright MCP browser testing against mock
+# 4. Complete all isolation testing requirements
+# 5. Shutdown mock server when done
 
-# Integration Testing
+# Final Integration Testing (UI automation only)
 # 1. Ensure all mock servers are shutdown
 # 2. Start real backend on port 3000  
-# 3. Test both components against real backend
+# 3. Run Playwright MCP UI automation against real backend
+# 4. Verify end-to-end workflows
 ```
 
 ## Testing Strategy
 
-### Development Testing (Dev Mode)
-- **Backend**: Specmatic MCP contract and resiliency tests against implementation (resiliency tests MUST pass)
-- **Frontend**: Test against Specmatic MCP Mock (port 9001) for consistent development experience
+### Phase 1: Backend Testing
+- **Backend Contract Tests**: Verify implementation matches products_api.yaml  
+- **Backend Resiliency Tests**: Verify error handling and edge cases (MANDATORY)
 
-### Integration Testing (Prod Mode)
-- **Frontend**: Test against real Backend (port 3000) for end-to-end validation
-- **Full Stack**: Complete contract compliance verification across both components
+### Phase 2: Frontend Development with Isolation Testing
+- **Frontend Implementation**: Build UI components against Specmatic MCP Mock (port 9001)
+- **Isolation Testing**: Complete Playwright MCP browser testing against mock server
+- **Requirements**: All UI functionality verified in isolation
 
-### Test Execution Order
-1. **Backend Contract Tests**: Verify implementation matches products_api.yaml
-2. **Backend Resiliency Tests**: Verify error handling and edge cases (MANDATORY)
-3. **Frontend Dev Tests**: Against mock server for rapid development
-4. **Integration Tests**: Both components against real backend
+### Phase 3: Final Integration Testing  
+- **UI Automation Only**: Playwright MCP testing against real backend (port 3000)
+- **End-to-End Workflows**: Verify complete user journeys and data persistence
+- **No Additional Contract Tests**: Backend contract compliance already verified in Phase 1
 
 ## Documentation
 
@@ -135,7 +146,7 @@ cd frontend
 - Update .gitignore as needed
 
 Each component has detailed instructions in its respective CLAUDE.md file.
-- **Build Order**: Backend → Frontend
-- **Dev Mode**: Shutdown backend before starting mock servers to avoid port conflicts
-- **Prod Mode**: Shutdown all mock servers before starting backend for integration testing
+- **Build Order**: Backend → Frontend (with Isolation Testing) → Final Integration
+- **Phase 2**: Frontend development includes Playwright MCP isolation testing against mock server
+- **Phase 3**: Integration testing uses UI automation only (no additional contract tests)
 - **Port Strategy**: Backend (3000), Frontend Mock (9001)
