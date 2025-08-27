@@ -44,3 +44,59 @@ Build a web interface that consumes the Products API defined in `../products_api
 - Add loading states for better UX
 - Consider using a HTTP client library for API calls
 - Run Frontend on port 4000 only
+
+## Frontend Testing (MANDATORY)
+
+**IMPORTANT**: Frontend implementation is NOT complete without proper UI testing using Playwright MCP tools. Both isolation and integration testing phases are required.
+
+### Phase 1: Isolation Testing (Against Specmatic Mock)
+**Required after frontend implementation:**
+
+1. **Start Test Environment**
+   - Start Specmatic MCP Mock server on port 9001
+   - Start frontend in dev mode (port 4000)
+   - Ensure frontend uses mock server (http://localhost:9001)
+
+2. **Playwright MCP Browser Testing** (Use these MCP tools):
+   - `mcp__playwright__browser_navigate` - Navigate to http://localhost:4000
+   - `mcp__playwright__browser_snapshot` - Verify UI loads correctly
+   - `mcp__playwright__browser_fill_form` - Test product creation form
+   - `mcp__playwright__browser_click` - Test type filtering buttons/dropdown
+   - `mcp__playwright__browser_take_screenshot` - Document UI state
+   
+3. **Test Coverage Requirements**:
+   - ✅ Product listing displays correctly
+   - ✅ Type filtering works (book, food, gadget, other)
+   - ✅ Product creation form validation
+   - ✅ Error handling with invalid inputs
+   - ✅ Loading states during API calls
+   - ✅ Responsive design verification
+
+### Phase 2: Integration Testing (Against Real Backend)
+**Required after isolation testing passes:**
+
+1. **Switch to Integration Environment**
+   - Stop Specmatic Mock server
+   - Start real backend on port 3000
+   - Configure frontend for production mode (http://localhost:3000)
+
+2. **End-to-End Playwright MCP Testing**:
+   - `mcp__playwright__browser_navigate` - Open application
+   - Complete user workflows (create → list → filter)
+   - Verify data persistence across page refreshes
+   - Test real API error scenarios
+
+3. **Integration Success Criteria**:
+   - ✅ Full product creation to listing workflow
+   - ✅ Data persists between frontend sessions
+   - ✅ Real backend error handling works
+   - ✅ No mock server dependencies in production mode
+
+### Testing Success Definition
+**Frontend is only considered complete when:**
+- All Playwright MCP browser tests pass in isolation mode
+- All integration tests pass against real backend
+- Screenshots/snapshots document working UI
+- Both dev and prod configurations tested
+
+**Note**: Simply starting servers without browser automation testing is insufficient. Playwright MCP tools must be used to verify actual UI functionality.
