@@ -8,11 +8,9 @@ This project demonstrates how to build a complete full-stack application from an
 
 Starting with just an OpenAPI specification (`products_api.yaml`), this project shows how you can:
 
-- Build a complete Node.js/Express backend API
-- Create a React frontend application
-- Use contract testing and mock servers for development
-- Ensure frontend and backend stay in sync with the contract
-- All without adding Specmatic as a dependency to your project
+- Build a complete Node.js/Express backend API using Specmatic MCP Contract and Resiliency Test as guard rails
+- Create a React frontend application using Specmatic MCP Mock to isolate and build the Frontend independently
+- Ensure frontend and backend stay in sync with the API specification in the process
 
 ## 🚀 Quick Start
 
@@ -72,9 +70,6 @@ specmatic-mcp-sample/
 ├── frontend/            # React frontend application
 │   ├── CLAUDE.md        # Frontend development instructions
 │   └── ...
-├── mcp-server/          # MCP Server with Products API tools
-│   ├── CLAUDE.md        # MCP Server development instructions
-│   └── ...
 ├── CLAUDE.md           # Main project instructions
 └── README.md           # This file
 ```
@@ -120,13 +115,16 @@ specmatic-mcp-sample/
 
 ### Production Setup
 ```
-┌─────────────────┐                 ┌─────────────────┐                 ┌─────────────────┐
-│                 │                 │                 │                 │                 │
-│    Frontend     │ ── HTTP ─────►  │    Backend      │ ◄──── HTTP ──── │   MCP Server    │
-│   (React App)   │    Requests     │ (Express API)   │     Requests    │  (MCP Tools)    │
-│                 │                 │                 │                 │                 │
-│   Port: 3001    │                 │   Port: 3000    │                 │                 │
-└─────────────────┘                 └─────────────────┘                 └─────────────────┘
+┌─────────────────┐                                  ┌─────────────────┐
+│                 │ ────── HTTP Requests ──────────► │                 │
+│    Frontend     │                                  │    Backend      │
+│   (React App)   │        ┌─────────────────┐       │ (Express API)   │
+│                 │        │products_api.yaml│       │                 │
+│   Port: 4000    │        │  (OpenAPI Spec) │       │   Port: 3000    │
+│                 │        └─────────────────┘       │                 │
+|                 |                                  |                 |
+│                 │ ◄────── HTTP Responses ───────── │                 │
+└─────────────────┘                                  └─────────────────┘
 ```
 
 ### Development Setup - Frontend
@@ -136,28 +134,7 @@ specmatic-mcp-sample/
 │    Frontend     │     Mock Requests   │ Specmatic Mock  │
 │   (React App)   │ ◄─────────────────► │    Server       │
 │                 │                     │                 │
-│   Port: 3001    │                     │   Port: 9001    │
-└─────────────────┘                     └─────────┬───────┘
-                                                  │
-                                                  │ Based on
-                                                  │
-                                                  ▼
-                                     ┌─────────────────────┐
-                                     │                     │
-                                     │   products_api.yaml │
-                                     │  (OpenAPI Spec)     │
-                                     │                     │
-                                     └─────────────────────┘
-```
-
-### Development Setup - MCP Server
-```
-┌─────────────────┐                     ┌─────────────────┐
-│                 │                     │                 │
-│   MCP Server    │     Mock Requests   │ Specmatic Mock  │
-│  (MCP Tools)    │ ◄─────────────────► │    Server       │
-│                 │                     │                 │
-│                 │                     │   Port: 9002    │
+│   Port: 4000    │                     │   Port: 9001    │
 └─────────────────┘                     └─────────┬───────┘
                                                   │
                                                   │ Based on
