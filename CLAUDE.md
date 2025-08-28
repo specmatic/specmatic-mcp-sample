@@ -8,17 +8,6 @@ This is a sample project demonstrating contract testing using Specmatic MCP (Mod
 - `backend/` - Node.js/Express API implementation
 - `frontend/` - React frontend application
 
-## Overview
-
-The project implements a simple Products API with the following capabilities:
-- GET /products - Retrieve products filtered by type (book, food, gadget, other)
-- POST /products - Create new products
-
-## Development Guidelines
-
-- Name variables and method descriptively, avoid short forms
-- Create appropriate .gitignore file
-
 ## Development Workflow
 
 Build components in this specific order:
@@ -29,210 +18,51 @@ cd backend
 # Follow instructions in backend/CLAUDE.md
 # Use Specmatic MCP for contract testing, not manual curl testing
 # IMPORTANT: Resiliency tests MUST pass
-# When there are contract or resiliency tests failed, analyse the test failures in JUnit report file provided in Specmatic MCP response and make necessary fixes in the code
 ```
 
-### 2. Frontend Development (Second Priority)
+### 2. Frontend Development (Second Priority) 
 ```bash
 cd frontend
-# This phase includes BOTH implementation AND isolation testing:
-# 1. Shutdown backend if running to avoid port conflicts
-# 2. Start Specmatic MCP Mock on port 9001 (based on products_api.yaml)
-# 3. Configure frontend to use http://localhost:9001 for API calls
-# 4. Develop against consistent mock responses
-# 5. Run Playwright MCP browser testing against mock server
-# 6. Complete all isolation testing requirements (MANDATORY)
-
-# CLEANUP: Always shutdown Specmatic MCP Mock after development and testing
+# Start Specmatic MCP Mock on port 9001 (based on products_api.yaml)
+# Configure frontend dev mode: REACT_APP_API_BASE_URL=http://localhost:9001
+# Develop against mock server and run Playwright MCP browser testing
+# Complete all isolation testing requirements (MANDATORY)
 ```
 
 ### 3. Final Integration Testing (Third Priority)
 ```bash
-# Integration testing between Frontend and Backend:
-# 1. Ensure all mock servers are shutdown
-# 2. Start real backend on port 3000
-# 3. Configure frontend for production mode (http://localhost:3000)
-# 4. Run Playwright MCP UI automation testing only (no contract/resiliency tests needed)
-# 5. Verify end-to-end workflows and data persistence
+# Stop all mock servers (port 9001)
+# Start real backend on port 3000
+# RECONFIGURE frontend to production mode: REACT_APP_API_BASE_URL=http://localhost:3000
+# Run Playwright MCP UI automation testing only
+# Verify end-to-end workflows and data persistence
 ```
 
-## Contract Testing with Specmatic MCP
+## Frontend Environment Configuration
 
-This project uses Specmatic MCP for:
-- **Contract Testing**: Verify backend implementation against `products_api.yaml`
-- **Mock Server**: Provide mock backend for frontend development
-- **Resiliency Testing**: Test error scenarios and edge cases in backend (MANDATORY)
+Setup environment-based API configuration:
+- **Dev mode**: `REACT_APP_API_BASE_URL=http://localhost:9001` (mock server)
+- **Prod mode**: `REACT_APP_API_BASE_URL=http://localhost:3000` (real backend)
 
-### Key Benefits
-- Both backend and frontend can be developed independently
-- Automatic contract validation across components
-- No manual API testing needed
-- Consistent behavior across environments
+For integration testing, run frontend in prod mode.
 
-## Mock Server Management
+## Features to Implement
 
-### Port Allocation Strategy
-- **Backend**: http://localhost:3000 (as defined in products_api.yaml)
-- **Frontend Dev Mock**: http://localhost:9001 (for frontend development)
-
-### Starting Mock Servers
-```bash
-# For Frontend development
-cd frontend
-# Start Specmatic MCP Mock on port 9001
-# Use Specmatic MCP manage_mock_server tool or equivalent
-```
-
-### Stopping Mock Servers
-```bash
-# Always cleanup after development to free ports
-# Stop Frontend mock server on port 9001
-# Use Specmatic MCP manage_mock_server stop commands
-```
-
-### Best Practices
-1. **Always shutdown backend** before starting mock servers to avoid port conflicts
-2. **Use dedicated port** for frontend mock server (9001)
-3. **Cleanup mock servers** after development sessions
-
-## Getting Started
-
-1. Start with the OpenAPI spec in `products_api.yaml`
-2. **Build Backend first** - implement according to contract, ensure resiliency tests pass
-3. **Build Frontend second** - use Specmatic MCP Mock (port 9001) for development and isolation testing
-   - Start mock server before development
-   - Complete implementation and Playwright MCP testing
-   - Shutdown mock server after development and testing
-4. **Final Integration** - Run UI automation testing with real backend (no additional contract tests needed)
-
-### Mock Server Lifecycle in Development Workflow
-```bash
-# Frontend Development Cycle (includes isolation testing)
-cd frontend
-# 1. Start Specmatic MCP Mock on port 9001
-# 2. Develop frontend features against mock
-# 3. Run Playwright MCP browser testing against mock
-# 4. Complete all isolation testing requirements
-# 5. Shutdown mock server when done
-
-# Final Integration Testing (UI automation only)
-# 1. Ensure all mock servers are shutdown
-# 2. Start real backend on port 3000  
-# 3. Run Playwright MCP UI automation against real backend
-# 4. Verify end-to-end workflows
-```
-
-## Testing Strategy
-
-### Phase 1: Backend Testing
-- **Backend Contract Tests**: Verify implementation matches products_api.yaml  
-- **Backend Resiliency Tests**: Verify error handling and edge cases (MANDATORY)
-
-### Phase 2: Frontend Development with Isolation Testing
-- **Frontend Implementation**: Build UI components against Specmatic MCP Mock (port 9001)
-- **Isolation Testing**: Complete Playwright MCP browser testing against mock server
-- **Requirements**: All UI functionality verified in isolation
-
-### Phase 3: Final Integration Testing  
-- **UI Automation Only**: Playwright MCP testing against real backend (port 3000)
-- **End-to-End Workflows**: Verify complete user journeys and data persistence
-- **No Additional Contract Tests**: Backend contract compliance already verified in Phase 1
-
-## Documentation
-
-- Add README.md with clear instructions to start and run each application
-- Update .gitignore as needed
-
-Backend component has detailed instructions in its backend/CLAUDE.md file. Frontend detailed instructions are provided below.
-- **Build Order**: Backend → Frontend (with Isolation Testing) → Final Integration
-- **Phase 2**: Frontend development includes Playwright MCP isolation testing against mock server
-- **Phase 3**: Integration testing uses UI automation only (no additional contract tests)
-- **Port Strategy**: Backend (3000), Frontend Mock (9001)
-
-## Frontend Implementation Details
-
-This is the frontend implementation for the Specmatic MCP Sample project.
-
-### Overview
-Build a web interface that consumes the Products API defined in `products_api.yaml`.
-
-### Features to Implement
-
-#### Product Listing
+### Product Listing
 - Display products with filtering by type (book, food, gadget, other)
 - Show product details: name, type, inventory count
-- Handle loading states and empty results
 
-#### Product Creation
+### Product Creation
 - Form to create new products
 - Input fields: name, type (dropdown), inventory (number input)
-- Validation according to API spec:
-  - Name is required
-  - Type must be one of: book, food, gadget, other
-  - Inventory must be between 1-9999
-- Handle success and error responses
+- Validation: Name required, type (book/food/gadget/other), inventory (1-9999)
 
-#### API Integration
-- Base URL: As per first URL in `products_api.yaml`
+### API Integration
 - GET /products?type={type} for filtering
 - POST /products for creating new products
 - Handle 200, 201, and 400 responses appropriately
-- Display error messages from API responses
 
-### UI/UX Guidelines
-- Responsive design
-- Clear error messaging
-- Loading indicators during API calls
-- Form validation feedback
-- Clean, intuitive interface
-
-### Development Notes
-- Build Frontend by using Specmatic MCP Mock by passing it `products_api.yaml`. Do not start the backend in `../backend` for this purpose.
-- Setup up node env such that in Dev mode the Frontend talks to Specmatic MCP Mock server and prod / regular mode it is wired to talk to the real application. This will help avoid conflict of where the real backend is running and the mock backend is running.
-- Always use the dev mode while in active development and thereby build the Frontend agains the mock backend only
-- Use React
-- Implement proper error handling
-- Add loading states for better UX
-- Consider using a HTTP client library for API calls
-- Run Frontend on port 4000 only
-
-### Frontend Implementation and Testing (MANDATORY)
-
-**IMPORTANT**: This phase includes BOTH implementation AND isolation testing. Frontend development is NOT complete without proper UI testing using Playwright MCP tools.
-
-#### Implementation and Isolation Testing (Against Specmatic Mock)
-**This phase must be completed as a single unit:**
-
-1. **Development Environment Setup**
-   - Start Specmatic MCP Mock server on port 9001
-   - Start frontend in dev mode (port 4000)
-   - Ensure frontend uses mock server (http://localhost:9001)
-
-2. **Implementation Requirements**
-   - Complete all UI components and features
-   - Implement proper API integration with mock server
-   - Add error handling and loading states
-
-3. **Isolation Testing with Playwright MCP** (Use these MCP tools):
-   - `mcp__playwright__browser_navigate` - Navigate to http://localhost:4000
-   - `mcp__playwright__browser_snapshot` - Verify UI loads correctly
-   - `mcp__playwright__browser_fill_form` - Test product creation form
-   - `mcp__playwright__browser_click` - Test type filtering buttons/dropdown
-   - `mcp__playwright__browser_take_screenshot` - Document UI state
-   
-4. **Test Coverage Requirements**:
-   - ✅ Product listing displays correctly
-   - ✅ Type filtering works (book, food, gadget, other)
-   - ✅ Product creation form validation
-   - ✅ Error handling with invalid inputs
-   - ✅ Loading states during API calls
-   - ✅ Responsive design verification
-
-#### Phase 2 Success Definition
-**Frontend Phase 2 is only considered complete when:**
-- Implementation is fully functional against mock server
-- All Playwright MCP browser tests pass in isolation mode
-- Screenshots/snapshots document working UI
-- Mock server cleanup completed
-
-**Note**: Integration testing against real backend will happen in a separate Final Integration phase. This phase focuses on implementation and isolation testing only.
+## Development Notes
+- Use React, run frontend on port 4000 only
+- Implement proper error handling and loading states
+- Name variables descriptively, avoid short forms
