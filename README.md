@@ -59,6 +59,28 @@ TIP: use plan mode to review the task list before proceeding
 - ✨ Run contract and resiliency tests
 - ✨ Ensure all components comply with the specification
 
+## Alternative to Claude Code: MCP Server Workflow with VS Code and Copilot Agent
+
+1. **Start Docker Desktop.**  
+2. **Open your project** in VS Code as a **workspace** (single-folder or multi-root as needed).  
+3. **Open the Command Palette** (`Ctrl+Shift+P` / `Cmd+Shift+P`) and search for **`MCP: Add server`**, then press **Enter**.  
+4. **Choose transport protocol** as **`stdio`**.  
+5. **Enter the command** to run the MCP server (adjust the project path to your setup):  
+   ```bash
+   docker run --rm -i --network=host -v /path/to/specmatic-mcp-sample:/app/reports specmatic/specmatic-mcp:latest
+   ```
+6. **Set the server ID** to `specmatic-mcp`.  
+7. **Choose installation scope**: `Global` (available everywhere) or `Workspace` (just this project).  
+8. **Verify the server**: open the **MCP servers** panel in VS Code and confirm the server is listed without errors.  
+9. Once connected, the MCP server is ready.  
+10. **Interact with Copilot Agent**: ask it to run contract tests, resiliency tests, or start a mock server in natural language.  
+11. To build the app, keep the README open and prompt Copilot with:  
+    ```
+    Please build the complete application according to the OpenAPI specification.
+    Show me the plan before proceeding with the changes.
+    ```
+12. Continue collaborating with the agent until the backend passes all tests and the frontend is integrated using the mock server.  
+
 ## 📁 Project Structure
 
 ```
@@ -189,6 +211,7 @@ See `products_api.yaml` for the complete specification with examples and validat
 
 - [Specmatic Documentation](https://specmatic.io/)
 - [Claude Code Documentation](https://docs.anthropic.com/claude/docs/claude-code)
+- [Use MCP servers in VS Code](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
 
 ---
