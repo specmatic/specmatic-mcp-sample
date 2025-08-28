@@ -14,6 +14,7 @@ Build components in this specific order:
 
 ### 1. Backend Development (First Priority)
 ```bash
+# Work in the backend/ directory at repo root level
 cd backend
 # Follow instructions in backend/CLAUDE.md
 # Use Specmatic MCP for contract testing, not manual curl testing
@@ -22,6 +23,7 @@ cd backend
 
 ### 2. Frontend Development (Second Priority) 
 ```bash
+# Work in the frontend/ directory at repo root level (NOT inside backend/)
 cd frontend
 # Start Specmatic MCP Mock on port 9001 (based on products_api.yaml)
 # Configure frontend dev mode: REACT_APP_API_BASE_URL=http://localhost:9001
