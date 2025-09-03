@@ -1,6 +1,11 @@
 # Specmatic MCP Sample Project
 
-This project demonstrates how to build a complete full-stack application from an OpenAPI specification using **[Specmatic MCP](https://hub.docker.com/repository/docker/specmatic/specmatic-mcp)** as intelligent guardrails, without requiring Specmatic as a project dependency.
+This project demonstrates how to build a complete full-stack application from an OpenAPI specification using **Specmatic MCP** as intelligent guardrails, without requiring Specmatic as a project dependency.
+
+## 📦 Specmatic MCP Resources
+
+- 🐳 **Docker Image**: [specmatic/specmatic-mcp](https://hub.docker.com/repository/docker/specmatic/specmatic-mcp) - Ready-to-use Docker image
+- 📂 **Source Code**: [specmatic/specmatic-mcp-server](https://github.com/specmatic/specmatic-mcp-server) - GitHub repository
 
 > **Note:** This project uses Claude Code for demo purposes, however you can use any coding agent of your choice and make necessary changes accordingly.
 
