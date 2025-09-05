@@ -30,10 +30,20 @@ Starting with just an OpenAPI specification (`products_api.yaml`), this project 
 Follow installation instructions at [https://docs.anthropic.com/claude/docs/claude-code](https://docs.anthropic.com/claude/docs/claude-code)
 
 **Step 2:** **Add Specmatic MCP Server**:
+
+**Option A: NPM Package (Recommended)**
+```bash
+cd specmatic-mcp-sample
+claude mcp add specmatic npx specmatic-mcp
+```
+
+**Option B: Docker** (requires Docker Desktop running)
 ```bash
 cd specmatic-mcp-sample
 claude mcp add-json specmatic '{"command":"docker","args":["run","--rm","-i","--network=host","-v","'$(pwd)':/app/reports","specmatic/specmatic-mcp:latest"],"env":{}}'
 ```
+
+> 📖 For detailed installation options and troubleshooting, see the [Specmatic MCP Server documentation](https://github.com/specmatic/specmatic-mcp-server/blob/main/README.md)
 ### 🎯 Usage (2 Simple Commands)
 
 **Step 3:** **Open this project in Claude Code**:
