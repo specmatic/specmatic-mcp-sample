@@ -2,6 +2,23 @@
 
 This project demonstrates how to build a complete full-stack application from an OpenAPI specification using **Specmatic MCP** as intelligent guardrails, without requiring Specmatic as a project dependency.
 
+## 🚀 TL;DR - Get Started Quickly
+
+```bash
+claude mcp add specmatic npx specmatic-mcp
+claude
+```
+
+Then tell Claude: `"build the application"` (use plan mode first, then autoaccept)
+
+And observe Claude build out the complete application!
+
+## 🎬 Video Demo
+
+[![Specmatic MCP Demo](https://img.youtube.com/vi/UgxxDtE5h_s/hqdefault.jpg)](https://www.youtube.com/watch?v=UgxxDtE5h_s)
+
+**This is the exact repository used in the demo above** - try it yourself and see contract-driven development in action!
+
 ## 📦 Specmatic MCP Resources
 
 - 📦 **NPM Package**: [specmatic-mcp](https://www.npmjs.com/package/specmatic-mcp) - Easy NPM installation
@@ -22,7 +39,7 @@ Starting with just an OpenAPI specification (`products_api.yaml`), this project 
 
 > **⚡ Just One Prompt - No Contract Drift!**
 >
-> Complete the quick setup below, then Claude Code with Specmatic MCP will build your entire full-stack application without any drift from the OpenAPI specification.
+> For the absolute fastest start, see the [TL;DR section](#-tldr---get-started-in-30-seconds) above. For detailed setup with alternatives, follow the steps below.
 
 ### ✅ Prerequisites (Required)
 
