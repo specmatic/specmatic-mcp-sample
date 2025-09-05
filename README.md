@@ -4,6 +4,7 @@ This project demonstrates how to build a complete full-stack application from an
 
 ## 📦 Specmatic MCP Resources
 
+- 📦 **NPM Package**: [specmatic-mcp](https://www.npmjs.com/package/specmatic-mcp) - Easy NPM installation
 - 🐳 **Docker Image**: [specmatic/specmatic-mcp](https://hub.docker.com/repository/docker/specmatic/specmatic-mcp) - Ready-to-use Docker image
 - 📂 **Source Code**: [specmatic/specmatic-mcp-server](https://github.com/specmatic/specmatic-mcp-server) - GitHub repository
 
